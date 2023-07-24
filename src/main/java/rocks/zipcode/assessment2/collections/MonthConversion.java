@@ -1,8 +1,7 @@
 package rocks.zipcode.assessment2.collections;
 
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Use a map to solve
@@ -13,17 +12,24 @@ public class MonthConversion {
      * @param monthName - name of month
      */
 
-    private HashMap<String,Integer> mapListString ;
-    private HashMap <Integer,String> mapListInteger;
+    private Map <String,Integer> mapListName ;
+    private Map <Integer,String> mapListNumber;
     public MonthConversion () {
-        this.mapListInteger = new HashMap<Integer,String>();
-        this.mapListString = new HashMap<String,Integer>();
+        this.mapListNumber = new TreeMap<>();
+        this.mapListName = new TreeMap<>();
+
     }
 
     public void add(Integer monthNumber, String monthName) {
+       mapListNumber.put(monthNumber,monthName);
+       mapListName.put(monthName,monthNumber);
 
-        mapListInteger.put(monthNumber,monthName);
-        mapListString.put(monthName,monthNumber);
+
+
+
+//
+//        mapListInteger.put(monthNumber,monthName);
+//        mapListString.put(monthName,monthNumber);
 
 
     }
@@ -34,7 +40,7 @@ public class MonthConversion {
      */
     public String getName(Integer monthNumber) {
 
-        return mapListInteger.get(monthNumber);
+        return  mapListNumber.get(monthNumber);
     }
 
     /**
@@ -42,8 +48,12 @@ public class MonthConversion {
      * @return - the ordinal of the month in the year
      */
     public int getNumber(String monthName) {
+        return mapListName.get(monthName);
 
-        return (Integer)null;
+        //        if (mapListNumber.containsValue(monthName)) {
+//            return mapListName.get(monthName);
+//        }else {return Integer.parseInt(null);}
+
     }
 
     /**
@@ -51,8 +61,11 @@ public class MonthConversion {
      * @return true if the monthNumber is in the keySet
      */
     public Boolean isValidNumber(Integer monthNumber) {
-
-        return null;
+        if (mapListNumber.containsKey(monthNumber)) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -60,14 +73,20 @@ public class MonthConversion {
      * @return true if the monthName is in the valueSet
      */
     public Boolean isValidMonth(String monthName) {
-        return null;
+
+        if (mapListName.containsKey(monthName)) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
      * @return number of entries in this mapping
      */
     public Integer size() {
-        return -1;
+
+        return mapListName.size();
     }
 
     /**
