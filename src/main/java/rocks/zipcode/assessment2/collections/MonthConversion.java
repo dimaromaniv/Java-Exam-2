@@ -1,5 +1,6 @@
 package rocks.zipcode.assessment2.collections;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,8 +16,8 @@ public class MonthConversion {
     private Map <String,Integer> mapListName ;
     private Map <Integer,String> mapListNumber;
     public MonthConversion () {
-        this.mapListNumber = new TreeMap<>();
-        this.mapListName = new TreeMap<>();
+        this.mapListNumber = new HashMap<>();
+        this.mapListName = new HashMap<>();
 
     }
 
@@ -94,6 +95,7 @@ public class MonthConversion {
      * @param monthName - name of month
      */
     public void update(Integer monthNumber, String monthName) {
+        mapListNumber.replace(monthNumber,monthName);
 
     }
 }
