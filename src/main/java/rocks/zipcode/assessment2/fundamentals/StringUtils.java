@@ -46,22 +46,22 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-//      if ( string != null &&  string.matches("[a-zA-Z]")) {
-//          return true;
-//      }else {
-//          return false;
-//      }
+      if ( string != null &&  string.matches("[a-zA-Z]")) {
+          return true;
+      }else {
+          return false;
+      }
 
-        for (int i = 0; i < string.length(); i++)
-        {
-            char c = string.charAt(i);
-            if (!(c >= 'A' && c <= 'Z') &&
-                    !(c >= 'a' && c <= 'z') &&
-                    !(c >= '0' && c <= '9')) {
-                return false;
-            }
-        }
-        return true;
+//        for (int i = 0; i < string.length(); i++)
+//        {
+//            char c = string.charAt(i);
+//            if (!(c >= 'A' && c <= 'Z') &&
+//                    !(c >= 'a' && c <= 'z') &&
+//                    !(c >= '0' && c <= '9')) {
+//                return false;
+//            }
+//        }
+//        return true;
     }
 
     /**
@@ -82,6 +82,12 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        return null;
+        if ( string.matches("[!@#$%&*()_+=|<>?{}\\[\\]~-]")) {
+            return true;
+        } else if (string.matches("[a-zA-z]") && string.matches("[!@#$%&*()_+=|<>?{}\\[\\]~-]")) {
+            return false;
+        } else {
+            return false;
+        }
     }
 }
