@@ -1,5 +1,7 @@
 package rocks.zipcode.assessment2.collections;
 
+import java.util.Collection;
+
 /**
  * Use a map to solve
  */
