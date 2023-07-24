@@ -10,8 +10,13 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by left-padding
      */
     public static String padLeft(String stringToBePadded, int amountOfPadding) {
-        return null;
-    }
+        StringBuilder sb = new StringBuilder();
+        while (sb.length() < amountOfPadding - stringToBePadded.length()) {
+            sb.append(" ");
+        }
+        sb.append(stringToBePadded);
+        return sb.toString();
+        }
 
     /**
      * @param stringToBePadded - string value to be flushed left
@@ -19,7 +24,8 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        return null;
+        return String.format("%-" + amountOfPadding + "s", stringToBePadded);
+
     }
 
     /**
@@ -28,7 +34,11 @@ public class StringUtils {
      * @return the string repeated and concatenated `n` times
      */
     public static String repeatString(String stringToBeRepeated, int numberOfTimeToRepeat) {
-        return null;
+        StringBuilder result  = new StringBuilder();
+        for (int i = 0 ; i < numberOfTimeToRepeat ; i++) {
+            result.append(stringToBeRepeated);
+        }
+        return result.toString();
     }
 
     /**
@@ -36,7 +46,22 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-        return null;
+//      if ( string != null &&  string.matches("[a-zA-Z]")) {
+//          return true;
+//      }else {
+//          return false;
+//      }
+
+        for (int i = 0; i < string.length(); i++)
+        {
+            char c = string.charAt(i);
+            if (!(c >= 'A' && c <= 'Z') &&
+                    !(c >= 'a' && c <= 'z') &&
+                    !(c >= '0' && c <= '9')) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -44,7 +69,12 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return null;
+        try {
+            Double.parseDouble(string);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 
     /**
