@@ -12,16 +12,17 @@ public class Inventory {
      * @param strings list of strings to add / remove / fetch from
      */
 
-    private ArrayList<String>  list;
+    private List<String>  list;
     public Inventory(List<String> strings) {
-        this.list = (ArrayList<String>) strings;
+
+        this.list = new ArrayList<>(strings);
     }
 
     /**
      * nullary constructor initializes a new list
      */
     public Inventory() {
-        this.list = null;
+        this.list = new ArrayList<>();
 
     }
 
@@ -37,9 +38,7 @@ public class Inventory {
      * @param item - decrement the number of this item in stock by 1
      */
     public void removeItemFromInventory(String item) {
-
-
-        return;
+        list.remove(item);
     }
 
     /**
@@ -47,6 +46,8 @@ public class Inventory {
      * @return - return the number of items
      */
     public Integer getItemQuantity(String item) {
+
+
         return list.size();
     }
 }
